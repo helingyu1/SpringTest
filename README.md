@@ -1,2 +1,2 @@
 # SpringTest
-about spring-mvc
+An spring-mvc project
