@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>timelineTemplate.html</title>
+	
+    <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+    <meta http-equiv="description" content="this is my page">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    
+    <!--<link rel="stylesheet" type="text/css" href="./styles.css">-->
+
+  </head>
+  
+  <body>
+  	<textarea style="display:none;">
+	<li>
+    	<a href="/Spring/user/${per.b_uname}">${per.b_uname }</a><br>
+	  		<p>${per.b_time }<br>
+	  		<p>${per.b_content }<br>
+	  		<p>div${status.count }<br>
+	  		<button name="keepBtn">收藏</button>  <button name="turnBtn">转发</button>  <button name="cmtBtn" onClick="show('div${status.count}')">评论</button>  <button name="gdBtn">点赞</button>
+	  		<div id="div${status.count }" style="display:none">
+	  			<form name="form5" action="comment/${per.b_id }" method="post">
+		  			<textarea rows="3" cols="50" name="comment">
+			  				请输入评论内容
+			  		</textarea>
+			  	<input type="submit" name="submit" value="评论" onClick="disapear('div${status.count}')">
+	  			</form>
+	  		</div>    
+	</li>
+	</textarea>
+  </body>
+</html>

@@ -1,0 +1,47 @@
+<html ng-app>
+<head>
+<meta charset="utf-8"/>
+<meta name="keywords" content="keyword1,keyword2,keyword3">
+<meta name="description" content="this is my page">
+<meta name="content-type" content="text/html; charset=UTF-8">
+</head>
+<body>
+	<div class="modal-header">
+		<h3 class="modal-title">欢迎登录</h3>
+	</div>
+	<div class="modal-body">
+		<form ng-submit="processForm()">
+				<!-- NAME -->
+				<div id="name-group" class="form-group"
+					ng-class="{ 'has-error' : errorName }">
+					<label>用户名</label> <input type="text" name="name"
+						class="form-control" placeholder="请输入用户名" ng-model="formData.name" required>
+					<span class="help-block" ng-show="errorName">{{ errorName }}</span>
+				</div>
+
+				<!-- SUPERHERO NAME -->
+				<div id="pwd-group" class="form-group"
+					ng-class="{ 'has-error' : errorSuperhero }">
+					<label>密码</label> <input type="password" name="superheroAlias"
+						class="form-control" placeholder="请输入密码" ng-model="formData.pwd" required>
+					<span class="help-block" ng-show="errorSuperhero">{{
+						errorSuperhero }}</span>
+				</div>
+
+				<!-- SUBMIT BUTTON -->
+				<button type="submit" class="btn btn-success btn-lg btn-block">
+					<span class="glyphicon glyphicon-flash"></span> 登录
+				</button>
+
+				<!-- Error MESSAGE -->
+				<div>
+					<span style="color:red" ng-model="errorMessage">{{errorMessage}}</span>
+				</div>
+			</form>
+	</div>
+	<div class="modal-footer">
+		<button class="btn btn-primary" ng-click="ok()">确认</button>
+		<button class="btn btn-warning" ng-click="cancel()">退出</button>
+	</div>
+</body>
+</html>

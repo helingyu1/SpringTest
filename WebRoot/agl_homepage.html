@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+<title>agl_homepage.html</title>
+<meta charset="utf-8">
+<link rel="stylesheet"
+	href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="keywords" content="keyword1,keyword2,keyword3">
+<meta name="description" content="this is my page">
+<meta name="content-type" content="text/html; charset=UTF-8">
+
+<script src="http://code.angularjs.org/angular-1.0.1.min.js"></script>
+<script type="text/javascript"
+	src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
+
+<!--<link rel="stylesheet" type="text/css" href="./styles.css">-->
+
+</head>
+
+<body>
+	<div class="container">
+		<!--<div class="col-md-6 col-md-offset-3">-->
+		<div class="col-md-6">
+			<!-- 微博发布 -->
+			{{username}}的个人主页
+			<div>
+				<form class="form-group" role="form">
+					<textarea class="form-control" rows="5" ng-model="data"></textarea>
+				</form>
+				<button class="btn">
+					<span class="glyphicon glyphicon-user"></span>表情
+				</button>
+				<button class="btn">
+					<span class="glyphicon glyphicon-picture"></span>图片
+				</button>
+				<button class="btn">
+					<span class="glyphicon glyphicon-facetime-video"></span>视频
+				</button>
+				<button class="btn">
+					<span class="glyphicon glyphicon-heart"></span>话题
+				</button>
+				<div class="pull-right">
+					<button class="btn btn-info" ng-click="processBlog()">发布</button>
+				</div>
+			</div>
+			<br />
+			<div class="panel panel-default" ng-repeat="blog in blogs">
+				<div class="panel-heading">{{blog.b_uname}}</div>
+				<p>{{ blog.b_content }}</p>
+				<div class="panel-footer">
+					<div class="container">
+						<div class="row">
+							<div class="col-md-1" style="border-right:1px solid #000;"><span class="glyphicon glyphicon-star-empty"></span>收藏</hr></div>
+							<div class="col-md-1" style="border-right:1px solid #000;"><span class="glyphicon glyphicon-share-alt"></span>转发</div>
+							<div class="col-md-1" style="border-right:1px solid #000;"><span class="glyphicon glyphicon-edit"></span>评论</div>
+							<div class="col-md-1"><span class="glyphicon glyphicon-thumbs-up"></span>赞</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			{{data}}
+		</div>
+	</div>
+</body>
+</html>

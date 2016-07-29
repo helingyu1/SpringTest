@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd" >
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/"
+	threshold="debug">
+	<!-- <appender name="AcceptFramework.AppLog.DailyRollingFile" class="org.apache.log4j.DailyRollingFileAppender"> 
+		<param name="File" value="communityFramework.log" /> <param name="DatePattern" 
+		value="'.'yyyy-MM-dd" /> <param name="Encoding" value="GBK" /> <layout class="org.apache.log4j.PatternLayout"> 
+		<param name="ConversionPattern" value="%d{yyyy-MM-dd HH:mm:ss} %p %c.%M(%L) 
+		| %m%n" /> </layout> </appender> -->
+	<appender name="AcceptFramework.AppLog.DailyRollingFile"
+		class="com.aisino.utils.UnidealRollingFileAppender">
+		<!-- class="org.apache.log4j.RollingFileAppender" -->
+		<param name="File" value="uniDeal.log" />
+		<param name="Encoding" value="GBK" />
+		<param name="MaxFileSize" value="20MB" />
+		<param name="MaxBackupIndex" value="60" />
+		<!--  
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d{yyyy-MM-dd HH:mm:ss} %p %c.%M(%L) %t | %m%n" />
+		</layout>
+		-->
+		
+		<layout class="com.aisino.utils.ExPatternLayout">
+			<param name="ConversionPattern" value="%d{yyyy-MM-dd HH:mm:ss} %p %c.%M(%L) %T | %m%n" />
+		</layout>
+		
+	</appender>
+	<appender name="AcceptFramework.ConsoleAppender" class="org.apache.log4j.ConsoleAppender">
+		<param name="Encoding" value="GBK" />
+		<param name="Threshold" value="debug"></param>
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d{yyyy-MM-dd HH:mm:ss} %p %c.%M(%L) | %m%n" />
+		</layout>
+		<!--  
+		<filter class="org.apache.log4j.varia.LevelRangeFilter">
+            <param
+                name="LevelMin"
+                value="error" />
+        </filter>
+        -->
+	</appender>
+	
+	
+	<appender name="AcceptFramework.AppLog.DailyRollingFileCBAndQK"
+		class="com.aisino.utils.UnidealRollingFileAppender">
+		<!-- class="org.apache.log4j.RollingFileAppender" -->
+		<param name="File" value="uniDeal_cb.log" />
+		<param name="Encoding" value="GBK" />
+		<param name="MaxFileSize" value="20MB" />
+		<param name="MaxBackupIndex" value="60" />
+		<!--  
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d{yyyy-MM-dd HH:mm:ss} %p %c.%M(%L) %t | %m%n" />
+		</layout>
+		-->
+		
+		<layout class="com.aisino.utils.ExPatternLayout">
+			<param name="ConversionPattern" value="%d{yyyy-MM-dd HH:mm:ss} %p %c.%M(%L) %T | %m%n" />
+		</layout>
+		
+	</appender>
+	
+	<appender name="AcceptFramework.AppLog.DailyRollingFileParam"
+		class="com.aisino.utils.UnidealRollingFileAppender">
+		<!-- class="org.apache.log4j.RollingFileAppender" -->
+		<param name="File" value="uniDeal_param.log" />
+		<param name="Encoding" value="GBK" />
+		<param name="MaxFileSize" value="20MB" />
+		<param name="MaxBackupIndex" value="60" />
+		<!--  
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d{yyyy-MM-dd HH:mm:ss} %p %c.%M(%L) %t | %m%n" />
+		</layout>
+		-->
+		
+		<layout class="com.aisino.utils.ExPatternLayout">
+			<param name="ConversionPattern" value="%d{yyyy-MM-dd HH:mm:ss} %p %c.%M(%L) %T | %m%n" />
+		</layout>
+		
+	</appender>
+	
+	
+	
+	
+	
+	
+	
+	<!-- 
+	<appender name="dealAppender"
+		class="org.apache.log4j.RollingFileAppender">
+		<param name="File" value="d:\\uniDealLog.log" />
+		<param name="Encoding" value="GBK" />
+		<param name="MaxFileSize" value="100MB" />
+		<param name="MaxBackupIndex" value="14" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d{yyyy-MM-dd HH:mm:ss} %p %c.%M(%L) | %m%n" />
+		</layout>
+	</appender>
+
+	<logger name="org.apache" additivity="false">
+		<level value="error" />
+		<appender-ref ref="AcceptFramework.AppLog.DailyRollingFile" />
+	</logger>
+
+	<logger name="com.ibatis" additivity="false">
+		<level value="info" />
+		<appender-ref ref="AcceptFramework.AppLog.DailyRollingFile" />
+	</logger>
+	
+  <logger name="org.quartz.core" additivity="false">
+		<level value="info" />
+		<appender-ref ref="AcceptFramework.AppLog.DailyRollingFile" />
+	</logger>
+	<logger name="org.quartz.simpl" additivity="false">
+		<level value="info" />
+		<appender-ref ref="AcceptFramework.AppLog.DailyRollingFile" />
+	</logger>
+	
+	<logger name="httpclient.wire" additivity="false">
+		<level value="info" />
+		<appender-ref ref="AcceptFramework.AppLog.DailyRollingFile" />
+	</logger>
+
+	<logger name="org.apache.commons.httpclient" additivity="false">
+		<level value="info" />
+		<appender-ref ref="AcceptFramework.AppLog.DailyRollingFile" />
+	</logger>
+		-->
+
+	<logger name="org.quartz" additivity="false">
+		<level value="info" />
+		<appender-ref ref="AcceptFramework.AppLog.DailyRollingFile" />
+	</logger>
+	
+	<logger name="org.apache" additivity="false">
+		<level value="error" />
+		<appender-ref ref="AcceptFramework.AppLog.DailyRollingFile" />
+	</logger>
+
+	<logger name="org.springframework" additivity="false">
+		<level value="info" />
+		<appender-ref ref="AcceptFramework.AppLog.DailyRollingFile" />
+	</logger>
+
+	<logger name="com.aisino" additivity="true">
+		<level value="debug" />
+		<appender-ref ref="AcceptFramework.AppLog.DailyRollingFile" />
+	</logger>
+
+	<logger name="com.aisino.uniAccept.web.servlet" additivity="true">
+		<level value="debug" />
+		<appender-ref ref="AcceptFramework.AppLog.DailyRollingFile" />
+	</logger>
+	
+	
+	<!-- 抄报、清卡日志存储-->
+	<logger name="com.aisino.uniDeal.cb" additivity="false">
+		<level value="debug" />
+		<appender-ref ref="AcceptFramework.AppLog.DailyRollingFileCBAndQK" />
+	</logger>
+	
+		
+	<!-- 企业参数同步日志存储-->
+	<logger name="com.aisino.uniDeal.param" additivity="false">
+		<level value="debug" />
+		<appender-ref ref="AcceptFramework.AppLog.DailyRollingFileParam" />
+	</logger>
+		
+	
+	
+	<root>
+		<appender-ref ref="AcceptFramework.ConsoleAppender" />
+	</root>
+</log4j:configuration>

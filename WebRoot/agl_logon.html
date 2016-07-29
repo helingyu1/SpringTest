@@ -1,0 +1,75 @@
+<!doctype html>
+<html>
+<head>
+<title>欢迎登录O(∩_∩)O</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<!-- 
+<script src="http://cdn.bootcss.com/jquery/1.11.2/jquery.min.js"></script>
+<!-- LOAD BOOTSTRAP CSS -->
+<link rel="stylesheet"
+	href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
+<!-- LOAD ANGULAR -->
+<script src="http://code.angularjs.org/angular-1.0.1.min.js"></script>
+<script
+	src="http://cdn.bootcss.com/angular-ui-router/1.0.0-beta.1/angular-ui-router.min.js"></script>
+<style>-->
+.ng-valid.ng-dirty {
+	border-color: green;
+}
+
+.ng-invalid.ng-dirty {
+	border-color: red;
+}
+</style>
+</head>
+<!-- apply the module and controller to our body so angular is applied to that -->
+<body ng-app="formApp">
+	<div class="container">
+		<div class="col-md-6">
+
+			<!-- PAGE TITLE -->
+			<div class="page-header">
+				<h1>
+					<span class="glyphicon glyphicon-tower"></span>~请登录~
+				</h1>
+			</div>
+
+			<!-- FORM -->
+			<form ng-submit="processForm()">
+				<!-- NAME -->
+				<div id="name-group" class="form-group"
+					ng-class="{ 'has-error' : errorName }">
+					<label>用户名</label> <input type="text" name="name"
+						class="form-control" placeholder="请输入用户名" ng-model="formData.name" required>
+					<span class="help-block" ng-show="errorName">{{ errorName }}</span>
+				</div>
+
+				<!-- SUPERHERO NAME -->
+				<div id="pwd-group" class="form-group"
+					ng-class="{ 'has-error' : errorSuperhero }">
+					<label>密码</label> <input type="password" name="superheroAlias"
+						class="form-control" placeholder="请输入密码" ng-model="formData.pwd" required>
+					<span class="help-block" ng-show="errorSuperhero">{{
+						errorSuperhero }}</span>
+				</div>
+
+				<!-- SUBMIT BUTTON -->
+				<button type="submit" class="btn btn-success btn-lg btn-block">
+					<span class="glyphicon glyphicon-flash"></span> 登录
+				</button>
+
+				<!-- Error MESSAGE -->
+				<div>
+					<span style="color:red" ng-model="errorMessage">{{errorMessage}}</span>
+				</div>
+			</form>
+
+			<!-- SHOW DATA FROM INPUTS AS THEY ARE BEING TYPED -->
+			<pre>
+		{{ formData }}
+	</pre>
+
+		</div>
+	</div>
+</body>
+</html>

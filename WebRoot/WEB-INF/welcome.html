@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>welcome.html</title>
+
+<meta name="keywords" content="keyword1,keyword2,keyword3">
+<meta name="description" content="this is my page">
+<meta name="content-type" content="text/html; charset=UTF-8">
+<script src="http://code.angularjs.org/angular-1.0.1.min.js"></script>
+
+<!--<link rel="stylesheet" type="text/css" href="./styles.css">-->
+
+</head>
+
+<body>
+	<div ng-app="myApp" ng-controller="postCtrl">
+		<h5>在此输入微博</h5>
+		<textarea ng-focus="focus()" placeholder='{{placeholder}}' ng-blur="blur()" ng-model="content" style=width:600px;height:100px></textarea>
+		<br /> 
+		<a href="#">表情</a> <a href="#">图片</a> <a href="#">视频</a> <a
+			href="#">话题</a> <a href="#">头条文章</a>
+		<button ng-click="blog()">发布</button>
+		<p>{{ content }}</p>
+	</div>
+	<div class="showblogs" ng-controller="showCtrl"></div>
+	<script>	
+		var app = angular.module('myApp', []);
+		app.controller('postCtrl', function($scope,$http) {
+			var defaultTitle='#输入话题#';
+			var defaultPlaceHolder='我是placeholder';
+			$scope.placeholder = defaultTitle + defaultPlaceHolder;
+			
+			$scope.focus = function () {
+                if (!$scope.content) {
+                    $scope.content = defaultTitle;
+                }
+            };
+			$scope.blur = function () {
+                if ($scope.content === defaultTitle) {
+                    $scope.content = '';
+                }
+            };
+			$scope.blog = function (){
+				var data = {content:$scope.content};
+				$http.post({url:'http://127.0.0.1:8080/Spring/blog/publish1.do',params:data}).success(function(response){});
+			};
+		});
+	</script>
+</body>
+</html>
