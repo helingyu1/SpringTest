@@ -15,6 +15,11 @@
 	src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
 
 <!--<link rel="stylesheet" type="text/css" href="./styles.css">-->
+<style type="text/css">
+.head{
+	color : red;
+}
+</style>
 
 </head>
 
@@ -23,7 +28,7 @@
 		<!--<div class="col-md-6 col-md-offset-3">-->
 		<div class="col-md-6">
 			<!-- 微博发布 -->
-			<p>{{username}}的个人主页，还可以输入<span ng-bind="left()"></span>个字哦</p>
+			<p class="head">{{username}}的个人主页，还可以输入<span ng-bind="left()"></span>个字哦</p>
 			<div>
 				<form class="form-group" role="form">
 					<textarea class="form-control" rows="5" ng-model="data"></textarea>
