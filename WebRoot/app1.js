@@ -100,6 +100,9 @@ routeApp.controller('HomePageCtl', function($scope, $cookieStore, $http) {
 			}
 		});
 	};
+	$scope.left = function(){
+		return 140-$scope.data.length;
+	};
 });
 routeApp.controller('ModalController', function($scope, $modal, $location) {
 	$scope.addModal = function() {
