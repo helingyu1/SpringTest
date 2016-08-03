@@ -100,8 +100,8 @@ routeApp.controller('HomePageCtl', function($scope, $cookieStore, $http) {
 			}
 		});
 	};
-	$scope.left = function(){
-		return 140-$scope.data.length;
+	$scope.left = function() {
+		return 140 - $scope.data.length;
 	};
 });
 routeApp.controller('ModalController', function($scope, $modal, $location) {
@@ -113,54 +113,62 @@ routeApp.controller('ModalController', function($scope, $modal, $location) {
 
 		});
 	};
-	$scope.register = function(){
+	$scope.register = function() {
 		alert("注册");
 		$location.path('/register');
-		
+
 	};
 });
-routeApp.controller('ModalInstanceController',
-		function($scope, $modalInstance,$http,$cookieStore,$location) {
-			$scope.formData = {};
+routeApp.controller('ModalInstanceController', function($scope, $modalInstance,
+		$http, $cookieStore, $location) {
+	$scope.formData = {};
 
-			$scope.ok = function() {
+	$scope.ok = function() {
+		$http({
+			method : 'POST',
+			url : 'user/logon.do',
+			type : 'text',
+			data : {
+				u_name : $scope.formData.name,
+				u_pwd : $scope.formData.pwd
+			},
+		}).success(function(data) {
+			if (data.state) {
+				$cookieStore.put("username", data.message);
 				$http({
 					method : 'POST',
-					url : 'user/logon.do',
-					type : 'text',
+					url : 'timeline/showFocusTL.do',
 					data : {
-						u_name : $scope.formData.name,
-						u_pwd : $scope.formData.pwd
+						u_name : data.message
 					},
 				}).success(function(data) {
-					if (data.state) {
-						$cookieStore.put("username", data.message);
-						$http({
-							method : 'POST',
-							url : 'timeline/showFocusTL.do',
-							data : {
-								u_name : data.message
-							},
-						}).success(function(data) {
-							$cookieStore.put("blogs", data);
-						});
-
-						// alert("成功啦~~~~~");
-						$location.path('/homepage');
-						$modalInstance.dismiss('cancel');
-					} else {
-						$scope.errorMessage = data.message;
-					}
+					$cookieStore.put("blogs", data);
 				});
-			};
 
-			$scope.cancel = function() {
+				// alert("成功啦~~~~~");
+				$location.path('/homepage');
 				$modalInstance.dismiss('cancel');
-			};
-
+			} else {
+				$scope.errorMessage = data.message;
+			}
 		});
-routeApp.controller('RouteListCtl', function($scope) {
+	};
+
+	$scope.cancel = function() {
+		$modalInstance.dismiss('cancel');
+	};
+
 });
-routeApp.controller('RouteDetailCtl', function($scope, $routeParams) {
-	$scope.id = $routeParams.id;
+routeApp.controller('CarouselCtl', function($scope) {
+	$scope.images = [ {
+		"id" : 1,
+		"path" : "resources/images/messi.jpg"
+	}, {
+		"id" : 2,
+		"path" : "resources/images/messi.jpg"
+	}, {
+		"id" : 3,
+		"path" : "resources/images/messi.jpg"
+	} ];
+	$scope.myInterval = 3000;
 });
