@@ -144,7 +144,6 @@ routeApp.controller('ModalInstanceController', function($scope, $uibModalInstanc
 				}).success(function(data) {
 					$cookieStore.put("blogs", data);
 				});
-
 				// alert("成功啦~~~~~");
 				$location.path('/homepage');
 				$uibModalInstance.dismiss('cancel');

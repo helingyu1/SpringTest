@@ -25,7 +25,7 @@
 			</div>
 		</div>
 		<div class="ShowCarousel col-md-6" ng-controller="CarouselCtl">
-			<uib-carousel interval="myInterval" no-wrap="noWrapSlides"> <uib-slide
+			<uib-carousel class="carouselslide" interval="myInterval" no-wrap="noWrapSlides"> <uib-slide
 				ng-repeat="image in images" active="slide.active"> <img
 				ng-src="{{image.path}}" style="margin:auto;" uib-tooltip="这是{{image.name}}" tooltip-placement="top-left"> </uib-slide> </uib-carousel>
 		</div>
