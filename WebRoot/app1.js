@@ -104,9 +104,9 @@ routeApp.controller('HomePageCtl', function($scope, $cookieStore, $http) {
 		return 140 - $scope.data.length;
 	};
 });
-routeApp.controller('ModalController', function($scope, $modal, $location) {
+routeApp.controller('ModalController', function($scope, $uibModal, $location) {
 	$scope.addModal = function() {
-		var logonModal = $modal.open({
+		var logonModal = $uibModal.open({
 			templateUrl : 'myModelContent.html',
 			controller : 'ModalInstanceController',
 			size : 'lg'
@@ -119,7 +119,7 @@ routeApp.controller('ModalController', function($scope, $modal, $location) {
 
 	};
 });
-routeApp.controller('ModalInstanceController', function($scope, $modalInstance,
+routeApp.controller('ModalInstanceController', function($scope, $uibModalInstance,
 		$http, $cookieStore, $location) {
 	$scope.formData = {};
 
@@ -147,7 +147,7 @@ routeApp.controller('ModalInstanceController', function($scope, $modalInstance,
 
 				// alert("成功啦~~~~~");
 				$location.path('/homepage');
-				$modalInstance.dismiss('cancel');
+				$uibModalInstance.dismiss('cancel');
 			} else {
 				$scope.errorMessage = data.message;
 			}
@@ -155,19 +155,22 @@ routeApp.controller('ModalInstanceController', function($scope, $modalInstance,
 	};
 
 	$scope.cancel = function() {
-		$modalInstance.dismiss('cancel');
+		$uibModalInstance.dismiss('cancel');
 	};
 
 });
 routeApp.controller('CarouselCtl', function($scope) {
 	$scope.images = [ {
 		"id" : 1,
+		"name" : "梅西",
 		"path" : "resources/images/messi.jpg"
 	}, {
 		"id" : 2,
+		"name" : "内马尔",
 		"path" : "resources/images/neymar.jpg"
 	}, {
 		"id" : 3,
+		"name" : "苏亚雷斯",
 		"path" : "resources/images/suarez.jpg"
 	} ];
 	$scope.myInterval = 3000;
