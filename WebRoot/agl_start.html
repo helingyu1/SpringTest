@@ -6,16 +6,53 @@
 <meta name="keywords" content="keyword1,keyword2,keyword3">
 <meta name="description" content="this is my page">
 <meta name="content-type" content="text/html; charset=UTF-8">
-
+<style>
+.ShowCarousel {
+	padding-top: 10px;
+}
+</style>
 </head>
 
 <body>
 	<div class="container">
-		<div class="col-md-3">
-			<button class="btn btn-info btn-block" ng-click="addModal()">登录</button>
+		<div class="container">
+			<!-- Login and Register -->
+			<div class="col-md-3">
+				<button class="btn btn-info btn-block" ng-click="addModal()">登录</button>
+			</div>
+			<div class="col-md-3">
+				<button class="btn btn-default btn-block" ng-click="register()">注册</button>
+			</div>
 		</div>
-		<div class="col-md-3">
-			<button class="btn btn-default btn-block" ng-click="register()">注册</button>
+		<div class="ShowCarousel">
+			<div id="myCarousel" class="carousel slide col-md-6" data-ride="carousel">
+				<!-- 轮播（Carousel）指标 -->
+				<ol class="carousel-indicators">
+					<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+					<li data-target="#myCarousel" data-slide-to="1"></li>
+					<li data-target="#myCarousel" data-slide-to="2"></li>
+				</ol>
+				<!-- 轮播（Carousel）项目 -->
+				<div class=""></div>
+				<div class="carousel-inner">
+					<div class="item active">
+						<img src="resources/images/messi.jpg"
+							class="img-responsive center-block" alt="First slide">
+					</div>
+					<div class="item">
+						<img src="resources/images/messi.jpg"
+							class="img-responsive center-block" alt="Second slide">
+					</div>
+					<div class="item">
+						<img src="resources/images/messi.jpg"
+							class="img-responsive center-block" alt="Third slide">
+					</div>
+				</div>
+				<!-- 轮播（Carousel）导航 -->
+				<a class="carousel-control left" href="#myCarousel"
+					data-slide="prev">&lsaquo;</a> <a class="carousel-control right"
+					href="#myCarousel" data-slide="next">&rsaquo;</a>
+			</div>
 		</div>
 	</div>
 </body>

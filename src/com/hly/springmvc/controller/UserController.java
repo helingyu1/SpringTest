@@ -1,6 +1,5 @@
 package com.hly.springmvc.controller;
 
-import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,10 +12,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.ModelAndView;
 
 import com.hly.springmvc.dao.impl.Test;
-import com.hly.springmvc.model.Blog;
 import com.hly.springmvc.model.OptionResult;
 import com.hly.springmvc.model.ResponseData;
 import com.hly.springmvc.model.User;
