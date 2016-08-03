@@ -165,10 +165,10 @@ routeApp.controller('CarouselCtl', function($scope) {
 		"path" : "resources/images/messi.jpg"
 	}, {
 		"id" : 2,
-		"path" : "resources/images/messi.jpg"
+		"path" : "resources/images/neymar.jpg"
 	}, {
 		"id" : 3,
-		"path" : "resources/images/messi.jpg"
+		"path" : "resources/images/suarez.jpg"
 	} ];
 	$scope.myInterval = 3000;
 });
