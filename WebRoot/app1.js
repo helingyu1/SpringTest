@@ -1,5 +1,5 @@
 ﻿var routeApp = angular.module('routeApp', [ "ngCookies", "ui.bootstrap",
-		"ngRoute"]);
+		"ngRoute", "toastr" ]);
 
 routeApp.config([ '$routeProvider', function($routeProvider) {
 	$routeProvider.when('/logon', {
@@ -18,14 +18,10 @@ routeApp.config([ '$routeProvider', function($routeProvider) {
 	// redirectTo : '/'
 	});
 } ]);
-//routeApp.config(['cfpLoadingBarProvider',function(cfpLoadingBarProvider){
-//	cfpLoadingBarProvider.parentSelector = '#loading-bar-container';
-//    cfpLoadingBarProvider.spinnerTemplate = '<div><span class="fa fa-spinner">Custom Loading Message...</div>';
-//    cfpLoadingBarProvider.latencyThreshold = 1000;
-//}]);
+
 // logonController
 routeApp.controller('LoginController', function($scope, $http, $location,
-		$cookieStore,BlogData) {
+		$cookieStore, BlogData) {
 	$scope.errorMessage;
 	$scope.formData = {};
 	// process the form
@@ -40,9 +36,9 @@ routeApp.controller('LoginController', function($scope, $http, $location,
 			},
 		}).success(function(data) {
 			if (data.state) {
-				//BlogData.result = data.message;
-				//alert(BlogData.result);
-				//$cookieStore.put("username", data.message);
+				// BlogData.result = data.message;
+				// alert(BlogData.result);
+				// $cookieStore.put("username", data.message);
 				$http({
 					method : 'POST',
 					url : 'timeline/showFocusTL.do',
@@ -82,7 +78,7 @@ routeApp.controller('RegisterController', function($scope, $http, $location,
 	};
 });
 // HomePageController
-routeApp.controller('HomePageCtl', function($scope, $cookieStore, $http) {
+routeApp.controller('HomePageCtl', function($scope, $cookieStore, $http,toastr) {
 	$scope.username = $cookieStore.get("username");
 	$scope.data = "";
 	$scope.blogs = $cookieStore.get("blogs");
@@ -101,7 +97,7 @@ routeApp.controller('HomePageCtl', function($scope, $cookieStore, $http) {
 			},
 		}).success(function(data) {
 			if (data.state) {
-				alert("发布成功");
+				toastr.info("发布成功！");
 				$scope.data = "";
 			}
 		});
@@ -125,8 +121,8 @@ routeApp.controller('ModalController', function($scope, $uibModal, $location) {
 
 	};
 });
-routeApp.controller('ModalInstanceController', function($scope, $uibModalInstance,
-		$http, $cookieStore, $location) {
+routeApp.controller('ModalInstanceController', function($scope,
+		$uibModalInstance, $http, $cookieStore, $location,toastr) {
 	$scope.formData = {};
 
 	$scope.ok = function() {
@@ -149,9 +145,10 @@ routeApp.controller('ModalInstanceController', function($scope, $uibModalInstanc
 					},
 				}).success(function(data) {
 					$cookieStore.put("blogs", data);
+					toastr.success("恭喜您，登录成功！")
 					$location.path('/homepage');
 				});
-//				$location.path('/homepage');
+				// $location.path('/homepage');
 				$uibModalInstance.dismiss('cancel');
 			} else {
 				$scope.errorMessage = data.message;
@@ -179,4 +176,16 @@ routeApp.controller('CarouselCtl', function($scope) {
 		"path" : "resources/images/suarez.jpg"
 	} ];
 	$scope.myInterval = 3000;
+});
+routeApp.config(function(toastrConfig) {
+	angular.extend(toastrConfig, {
+		autoDismiss : false,
+		containerId : 'toast-container',
+		maxOpened : 0,
+		newestOnTop : true,
+		positionClass : 'toast-top-center',
+		preventDuplicates : false,
+		preventOpenDuplicates : false,
+		target : 'body'
+	});
 });
