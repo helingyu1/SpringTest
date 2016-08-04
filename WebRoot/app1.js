@@ -1,5 +1,5 @@
 ﻿var routeApp = angular.module('routeApp', [ "ngCookies", "ui.bootstrap",
-		"ngRoute" ]);
+		"ngRoute"]);
 
 routeApp.config([ '$routeProvider', function($routeProvider) {
 	$routeProvider.when('/logon', {
@@ -18,9 +18,14 @@ routeApp.config([ '$routeProvider', function($routeProvider) {
 	// redirectTo : '/'
 	});
 } ]);
+//routeApp.config(['cfpLoadingBarProvider',function(cfpLoadingBarProvider){
+//	cfpLoadingBarProvider.parentSelector = '#loading-bar-container';
+//    cfpLoadingBarProvider.spinnerTemplate = '<div><span class="fa fa-spinner">Custom Loading Message...</div>';
+//    cfpLoadingBarProvider.latencyThreshold = 1000;
+//}]);
 // logonController
 routeApp.controller('LoginController', function($scope, $http, $location,
-		$cookieStore) {
+		$cookieStore,BlogData) {
 	$scope.errorMessage;
 	$scope.formData = {};
 	// process the form
@@ -35,7 +40,9 @@ routeApp.controller('LoginController', function($scope, $http, $location,
 			},
 		}).success(function(data) {
 			if (data.state) {
-				$cookieStore.put("username", data.message);
+				//BlogData.result = data.message;
+				//alert(BlogData.result);
+				//$cookieStore.put("username", data.message);
 				$http({
 					method : 'POST',
 					url : 'timeline/showFocusTL.do',
@@ -46,7 +53,6 @@ routeApp.controller('LoginController', function($scope, $http, $location,
 					$cookieStore.put("blogs", data);
 				});
 
-				// alert("成功啦~~~~~");
 				$location.path('/homepage');
 			} else {
 				$scope.errorMessage = data.message;
@@ -143,9 +149,9 @@ routeApp.controller('ModalInstanceController', function($scope, $uibModalInstanc
 					},
 				}).success(function(data) {
 					$cookieStore.put("blogs", data);
+					$location.path('/homepage');
 				});
-				// alert("成功啦~~~~~");
-				$location.path('/homepage');
+//				$location.path('/homepage');
 				$uibModalInstance.dismiss('cancel');
 			} else {
 				$scope.errorMessage = data.message;
